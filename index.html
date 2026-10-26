@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tablero GRD Félix Bulnes</title>
+<meta name="description" content="Indicadores GRD 2018–2026 del Hospital Félix Bulnes Cerda por servicio de egreso.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">Hospital Félix Bulnes Cerda · SDD · Unidad GRD</div>
+      <h1>Tablero de gestión GRD</h1>
+    </div>
+    <p class="cut">Fuente: <b>Cuadro de mando GRD</b> (corte 15-10-2026). Egresos 2018–2026 por servicio de egreso, con norma y versión GRD aplicadas. 2026 tiene meses cerrados hasta <b>agosto</b>.</p>
+  </header>
+
+  <div class="filters" role="group" aria-label="Filtros">
+    <div class="f"><label for="fScope">Servicio</label><select id="fScope"></select></div>
+    <div class="f"><label for="fYear">Año</label><select id="fYear"></select></div>
+    <div class="f"><label for="fMonth">Período</label><select id="fMonth"></select></div>
+    <div class="f"><span class="lab" id="lMetric">Indicador de los gráficos</span>
+      <div class="seg" id="fMetric" role="group" aria-labelledby="lMetric"></div></div>
+  </div>
+  <p class="notice" id="notice" hidden></p>
+
+  <section class="kpis" id="kpis" aria-label="Indicadores del período"></section>
+
+  <div class="grid2">
+    <section class="card">
+      <h2 id="tTrend">Evolución anual</h2>
+      <p class="sub" id="sTrend"></p>
+      <div class="chart" id="cTrend"></div>
+    </section>
+    <section class="card">
+      <h2 id="tMonth">Comportamiento mensual</h2>
+      <p class="sub" id="sMonth"></p>
+      <div class="legend" id="lgMonth"></div>
+      <div class="chart" id="cMonth"></div>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2 id="tTable">Comparativo por servicio</h2>
+    <p class="sub" id="sTable">Haz clic en un servicio para ver su detalle arriba. Las columnas se ordenan al hacer clic en el encabezado.</p>
+    <div class="tablebox"><table id="tbl"><thead></thead><tbody></tbody></table></div>
+  </section>
+
+  <div class="foot">
+    <div><b>IEMA</b> (índice de estancia media ajustada) = estancia media observada / estancia media esperada según la norma GRD. Bajo 1,00 el servicio usa menos días que la norma. Semáforo del tablero: ≤ 1,00 eficiente · 1,00–1,10 en vigilancia · &gt; 1,10 sobreestadía.</div>
+    <div><b>Estancias evitables</b>: días por sobre (positivo) o bajo (negativo) lo esperado. <b>Peso GRD medio</b> refleja la complejidad de la casuística. <b>% outliers</b>: egresos con estancia prolongada (outliers superiores) sobre egresos totales, indicador B.3_1.4. Para varios meses se pondera por egresos, lo que reproduce los totales anuales de la planilla. El total hospital y la UPC vienen solo como total anual (en 2026 incluye lo registrado en octubre); Psiquiatría no tiene este indicador en la fuente.</div>
+    <div>En servicios, estancia media, IEMA, peso y estancias evitables usan egresos depurados; la mortalidad usa egresos totales. Los valores de varios meses se ponderan por egresos a partir de los datos mensuales. Octubre 2026 (mes en curso al corte) y septiembre 2026 (sin datos en la fuente) quedan fuera. Se excluye Pabellón, recuperación o CMA por su volumen mínimo (≤ 9 egresos/año).</div>
+  </div>
+</div>
+<div id="tipHost"></div>
+
+
+<script src="datos/datos_grd_1.js"></script>
+<script src="datos/datos_grd_2.js"></script>
+<script src="datos/datos_grd_3.js"></script>
+<script src="js/tablero.js"></script>
+</body>
+</html>
